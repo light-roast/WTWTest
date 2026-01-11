@@ -35,7 +35,7 @@ public class Persona
     public DateTime CreatedDate { get; set; } = DateTime.UtcNow;
 
     [NotMapped]
-    public string FullIdentificationNumber => $"{IdentificationType}-{IdentificationNumber}";
+    public string FullIdentificationNumber => $"{IdentificationNumber}-{IdentificationType}";
 
     [NotMapped]
     public string FullName => $"{FirstName} {LastName}";
