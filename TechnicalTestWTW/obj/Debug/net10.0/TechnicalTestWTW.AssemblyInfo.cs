@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TechnicalTestWTW")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+390107ee8ab229459dca4e243bf671531acc2461")]
 [assembly: System.Reflection.AssemblyProductAttribute("TechnicalTestWTW")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TechnicalTestWTW")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
