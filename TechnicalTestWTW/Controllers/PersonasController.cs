@@ -27,7 +27,7 @@ public class PersonasController : ControllerBase
         return Ok(personasDto);
     }
 
-    [HttpGet("creadas")]
+    [HttpGet("created")]
     public async Task<ActionResult<List<PersonaDto>>> GetPersonasCreadas()
     {
         var personas = await _context.GetPersonasCreadasAsync();

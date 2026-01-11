@@ -54,6 +54,13 @@ public class ApplicationDbContext : DbContext
                     Username = "admin",
                     Password = "admin123",
                     CreatedDate = new DateTime(2024, 1, 15, 10, 30, 0, DateTimeKind.Utc)
+                },
+                new Usuario
+                {
+                    Id = 2,
+                    Username = "doublevpartners",
+                    Password = "doublev123",
+                    CreatedDate = DateTime.UtcNow
                 }
             );
         });
