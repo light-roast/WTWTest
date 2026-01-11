@@ -34,9 +34,9 @@ public class Persona
     [Required]
     public DateTime CreatedDate { get; set; } = DateTime.UtcNow;
 
-    [NotMapped]
-    public string FullIdentificationNumber => $"{IdentificationNumber}-{IdentificationType}";
+    [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
+    public string FullIdentificationNumber { get; set; } = string.Empty;
 
-    [NotMapped]
-    public string FullName => $"{FirstName} {LastName}";
+    [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
+    public string FullName { get; set; } = string.Empty;
 }

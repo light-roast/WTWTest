@@ -22,6 +22,12 @@ public class ApplicationDbContext : DbContext
             entity.Property(e => e.CreatedDate)
                 .HasDefaultValueSql("datetime('now')");
 
+            entity.Property(e => e.FullIdentificationNumber)
+                .HasComputedColumnSql("IdentificationNumber || '-' || IdentificationType", stored: true);
+
+            entity.Property(e => e.FullName)
+                .HasComputedColumnSql("FirstName || ' ' || LastName", stored: true);
+
             entity.HasData(
                 new Persona
                 {
