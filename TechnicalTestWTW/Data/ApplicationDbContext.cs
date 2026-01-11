@@ -20,23 +20,23 @@ public class ApplicationDbContext : DbContext
         modelBuilder.Entity<Persona>(entity =>
         {
             entity.Property(e => e.CreatedDate)
-                .HasDefaultValueSql("datetime('now')");
+                .HasDefaultValueSql("GETUTCDATE()");
 
             entity.Property(e => e.FullIdentificationNumber)
-                .HasComputedColumnSql("IdentificationNumber || '-' || IdentificationType", stored: true);
+                .HasComputedColumnSql("([IdentificationNumber] + '-' + [IdentificationType])", stored: true);
 
             entity.Property(e => e.FullName)
-                .HasComputedColumnSql("FirstName || ' ' || LastName", stored: true);
+                .HasComputedColumnSql("([FirstName] + ' ' + [LastName])", stored: true);
 
             entity.HasData(
                 new Persona
                 {
                     Id = 1,
-                    FirstName = "Juan",
-                    LastName = "Pérez",
-                    IdentificationNumber = "123456789",
+                    FirstName = "Daniel",
+                    LastName = "Echeverri",
+                    IdentificationNumber = "1088315344",
                     IdentificationType = "CC",
-                    Email = "juan.perez@example.com",
+                    Email = "echeverri121@gmail.com",
                     CreatedDate = new DateTime(2024, 1, 15, 10, 30, 0, DateTimeKind.Utc)
                 }
             );
@@ -45,7 +45,7 @@ public class ApplicationDbContext : DbContext
         modelBuilder.Entity<Usuario>(entity =>
         {
             entity.Property(e => e.CreatedDate)
-                .HasDefaultValueSql("datetime('now')");
+                .HasDefaultValueSql("GETUTCDATE()");
 
             entity.HasData(
                 new Usuario
