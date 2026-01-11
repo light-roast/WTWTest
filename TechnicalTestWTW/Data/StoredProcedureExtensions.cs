@@ -13,13 +13,4 @@ public static class StoredProcedureExtensions
         
         return result;
     }
-
-    public static List<PersonaDto> GetPersonasCreadas(this ApplicationDbContext context)
-    {
-        var result = context.Database
-            .SqlQueryRaw<PersonaDto>("EXEC sp_GetPersonasCreadas")
-            .ToList();
-        
-        return result;
-    }
 }
