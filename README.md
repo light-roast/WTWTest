@@ -4,11 +4,15 @@
 
 ---
 
-## Español
+<a name="español"></a>
+
+## 🇪🇸 Versión en Español
 
 Sistema de gestión de personas y usuarios desarrollado con .NET 10, Entity Framework Core y SQL Server.
 
-### 📋 Descripción
+> 🌐 **Frontend del Proyecto**: [WTWTest-Front](https://github.com/light-roast/WTWTest-Front) - Interfaz de usuario desarrollada en Vanilla JavaScript para consumir esta API.
+
+## 📋 Descripción
 
 API REST completa que permite gestionar personas y usuarios, incluyendo:
 - CRUD de personas con columnas calculadas automáticas
@@ -17,7 +21,7 @@ API REST completa que permite gestionar personas y usuarios, incluyendo:
 - Mapeo automático con AutoMapper
 - Base de datos SQL Server con Entity Framework Core
 
-### 🚀 Tecnologías Utilizadas
+## 🚀 Tecnologías Utilizadas
 
 - **.NET 10** - Framework principal
 - **ASP.NET Core Web API** - API REST
@@ -26,7 +30,7 @@ API REST completa que permite gestionar personas y usuarios, incluyendo:
 - **AutoMapper 12.0.1** - Mapeo de objetos
 - **CORS** - Habilitado para consumo desde frontend
 
-### 📁 Estructura del Proyecto
+## 📁 Estructura del Proyecto
 
 ```
 TechnicalTestWTW/
@@ -37,7 +41,7 @@ TechnicalTestWTW/
 │   ├── ApplicationDbContext.cs           # Contexto de EF Core
 │   └── StoredProcedureExtensions.cs      # Extensiones para SP
 ├── Mappings/
-│   └── PersonaMappingProfile.cs   # Configuración de AutoMapper
+│   └── MappingProfile.cs          # Configuración de AutoMapper
 ├── Models/
 │   ├── Persona.cs                 # Entidad Persona
 │   ├── PersonaDto.cs              # DTO de Persona
@@ -47,9 +51,9 @@ TechnicalTestWTW/
 └── appsettings.json              # Configuración (Connection Strings)
 ```
 
-### 🗄️ Modelo de Datos
+## 🗄️ Modelo de Datos
 
-#### Entidad: Personas
+### Entidad: Personas
 
 | Campo | Tipo | Descripción |
 |-------|------|-------------|
@@ -63,7 +67,7 @@ TechnicalTestWTW/
 | `FullName` | string | **Columna calculada**: FirstName + LastName |
 | `FullIdentificationNumber` | string | **Columna calculada**: IdentificationNumber-IdentificationType |
 
-#### Entidad: Usuarios
+### Entidad: Usuarios
 
 | Campo | Tipo | Descripción |
 |-------|------|-------------|
@@ -72,16 +76,16 @@ TechnicalTestWTW/
 | `Password` | string(255) | Contraseña |
 | `CreatedDate` | DateTime | Fecha de creación (auto-generada) |
 
-### 🔌 Endpoints de la API
+## 🔌 Endpoints de la API
 
-#### Base URL
+### Base URL
 ```
 http://localhost:5241/api
 ```
 
-#### Personas
+### Personas
 
-##### Listar todas las personas
+#### Listar todas las personas
 ```http
 GET /personas
 ```
@@ -103,17 +107,17 @@ GET /personas
 ]
 ```
 
-##### Listar personas usando Stored Procedure
+#### Listar personas usando Stored Procedure
 ```http
-GET /personas/created
+GET /personas/creadas
 ```
 
-##### Obtener persona por ID
+#### Obtener persona por ID
 ```http
 GET /personas/{id}
 ```
 
-##### Crear nueva persona
+#### Crear nueva persona
 ```http
 POST /personas
 Content-Type: application/json
@@ -127,9 +131,9 @@ Content-Type: application/json
 }
 ```
 
-#### Usuarios
+### Usuarios
 
-##### Validar usuario (Login)
+#### Validar usuario (Login)
 ```http
 POST /usuarios/login
 Content-Type: application/json
@@ -157,19 +161,19 @@ Content-Type: application/json
 }
 ```
 
-### ⚙️ Configuración y Ejecución
+## ⚙️ Configuración y Ejecución
 
-#### Requisitos Previos
+### Requisitos Previos
 
 - [.NET 10 SDK](https://dotnet.microsoft.com/download/dotnet/10.0)
 - [SQL Server LocalDB](https://learn.microsoft.com/sql/database-engine/configure-windows/sql-server-express-localdb) o SQL Server Express
 - [Visual Studio 2022](https://visualstudio.microsoft.com/) (opcional)
 
-#### Pasos para Ejecutar
+### Pasos para Ejecutar
 
 1. **Clonar el repositorio**
    ```bash
-   git clone https://github.com/light-roast/WTWTest
+   git clone <repository-url>
    cd TechnicalTestWTW
    ```
 
@@ -196,7 +200,7 @@ Content-Type: application/json
 
 5. **La base de datos se crea automáticamente** al ejecutar la aplicación por primera vez gracias a `EnsureCreated()`.
 
-#### Datos de Prueba Iniciales
+### Datos de Prueba Iniciales
 
 Al ejecutar la aplicación, se crean automáticamente:
 
@@ -213,26 +217,25 @@ Al ejecutar la aplicación, se crean automáticamente:
 - Identificación: CC-1088315344
 - Email: echeverri121@gmail.com
 
-### 🔒 Características de Seguridad
+## 🔒 Características de Seguridad
 
 - **CORS habilitado**: Permite consumo desde cualquier origen (configurado para desarrollo)
 - **Validaciones**: Data Annotations en modelos para validación de entrada
 - **Columnas calculadas**: Generadas automáticamente por SQL Server
 - **Stored Procedures**: Para consultas optimizadas
 
-### 🛠️ Tecnologías y Paquetes NuGet
+## 🛠️ Tecnologías y Paquetes NuGet
 
 ```xml
 <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="10.0.1" />
 <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="10.0.1" />
 <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="10.0.1" />
 <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
-<PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.1" />
 ```
 
-### 📊 Stored Procedures
+## 📊 Stored Procedures
 
-#### sp_GetPersonasCreadas
+### sp_GetPersonasCreadas
 
 Consulta optimizada para obtener todas las personas con columnas calculadas:
 
@@ -257,52 +260,81 @@ BEGIN
 END
 ```
 
-### 🌐 Consumo desde Frontend
+## 🌐 Consumo desde Frontend
 
-Ver el archivo `UI_VANILLA_JS_PROMPT.md` para instrucciones detalladas sobre cómo crear una interfaz en Vanilla JavaScript que consuma esta API.
+**Frontend Repository**: [WTWTest-Front](https://github.com/light-roast/WTWTest-Front)
 
-### 🐛 Troubleshooting
+Este proyecto tiene una interfaz de usuario completa desarrollada en Vanilla JavaScript (HTML, CSS, JS puro) que consume todos los endpoints de esta API.
 
-#### Error: SQL Server LocalDB no encontrado
+El frontend incluye:
+- 📱 Página de login con validación de usuarios
+- 👥 Lista de personas con diseño responsive
+- ➕ Formulario para crear nuevas personas
+- 🎨 Interfaz moderna y limpia
+- 🔄 Consumo de API con Fetch API y async/await
+
+**Instrucciones adicionales**: Ver el archivo `UI_VANILLA_JS_PROMPT.md` en este repositorio para detalles sobre la implementación del frontend.
+
+## 🐛 Troubleshooting
+
+### Error: SQL Server LocalDB no encontrado
 **Solución:** Instala SQL Server Express LocalDB desde [aquí](https://aka.ms/ssmsfullsetup)
 
-#### Error: Puerto ya en uso
+### Error: Puerto ya en uso
 **Solución:** Modifica el puerto en `launchSettings.json`:
 ```json
 "applicationUrl": "http://localhost:5000"
 ```
 
-#### Error: Base de datos no se crea
+### Error: Base de datos no se crea
 **Solución:** Verifica que SQL Server LocalDB esté corriendo:
 ```bash
 sqllocaldb info
 sqllocaldb start mssqllocaldb
 ```
 
-### 📝 Notas de Desarrollo
+## 📝 Notas de Desarrollo
 
 - **No usar migraciones**: El proyecto usa `EnsureCreated()` para crear la base de datos automáticamente
-- **Columnas calculadas**: `FullName` y `FullIdentificationNumber` se generan automáticamente en SQL Server con `PERSISTED`
+- **Columnas calculadas**: `FullName` y `FullIdentificationNumber` se generan automáticamente en SQL Server
 - **AutoMapper**: Ignora automáticamente las propiedades auto-generadas y calculadas
-- **GETUTCDATE()**: Usado para establecer automáticamente la fecha de creación en UTC
 
-### 👤 Autor
+## 🔗 Repositorios Relacionados
+
+### Frontend - WTWTest-Front
+🌐 **[https://github.com/light-roast/WTWTest-Front](https://github.com/light-roast/WTWTest-Front)**
+
+Interfaz de usuario completa desarrollada en Vanilla JavaScript (HTML, CSS, JS) que consume esta API REST.
+
+**Características del Frontend:**
+- ✅ Sistema de login con validación
+- ✅ Gestión completa de personas (CRUD)
+- ✅ Diseño responsive y moderno
+- ✅ Consumo de API con Fetch y async/await
+- ✅ Validación de formularios
+- ✅ Manejo de errores y estados de carga
+
+## 👤 Autor
 
 Daniel Echeverri
 - Email: echeverri121@gmail.com
 - GitHub: [@light-roast](https://github.com/light-roast)
 
-### 📄 Licencia
+## 📄 Licencia
 
 Este proyecto es una prueba técnica para WTW.
 
 ---
 
-## English
+<a name="english"></a>
+
+## 🇬🇧 English Version
 
 Person and user management system developed with .NET 10, Entity Framework Core, and SQL Server.
 
-### 📋 Description
+> 🌐 **Project Frontend**: [WTWTest-Front](https://github.com/light-roast/WTWTest-Front) - User interface developed in Vanilla JavaScript to consume this API.
+
+## 📋 Description
 
 Complete REST API that allows managing persons and users, including:
 - CRUD operations for persons with automatic computed columns
@@ -311,7 +343,7 @@ Complete REST API that allows managing persons and users, including:
 - Automatic mapping with AutoMapper
 - SQL Server database with Entity Framework Core
 
-### 🚀 Technologies Used
+## 🚀 Technologies Used
 
 - **.NET 10** - Main framework
 - **ASP.NET Core Web API** - REST API
@@ -320,7 +352,7 @@ Complete REST API that allows managing persons and users, including:
 - **AutoMapper 12.0.1** - Object mapping
 - **CORS** - Enabled for frontend consumption
 
-### 📁 Project Structure
+## 📁 Project Structure
 
 ```
 TechnicalTestWTW/
@@ -341,9 +373,9 @@ TechnicalTestWTW/
 └── appsettings.json              # Configuration (Connection Strings)
 ```
 
-### 🗄️ Data Model
+## 🗄️ Data Model
 
-#### Entity: Personas
+### Entity: Personas
 
 | Field | Type | Description |
 |-------|------|-------------|
@@ -357,7 +389,7 @@ TechnicalTestWTW/
 | `FullName` | string | **Computed column**: FirstName + LastName |
 | `FullIdentificationNumber` | string | **Computed column**: IdentificationNumber-IdentificationType |
 
-#### Entity: Usuarios
+### Entity: Usuarios
 
 | Field | Type | Description |
 |-------|------|-------------|
@@ -366,16 +398,16 @@ TechnicalTestWTW/
 | `Password` | string(255) | Password |
 | `CreatedDate` | DateTime | Creation date (auto-generated) |
 
-### 🔌 API Endpoints
+## 🔌 API Endpoints
 
-#### Base URL
+### Base URL
 ```
 http://localhost:5241/api
 ```
 
-#### Personas
+### Personas
 
-##### List all persons
+#### List all persons
 ```http
 GET /personas
 ```
@@ -397,17 +429,17 @@ GET /personas
 ]
 ```
 
-##### List persons using Stored Procedure
+#### List persons using Stored Procedure
 ```http
 GET /personas/created
 ```
 
-##### Get person by ID
+#### Get person by ID
 ```http
 GET /personas/{id}
 ```
 
-##### Create new person
+#### Create new person
 ```http
 POST /personas
 Content-Type: application/json
@@ -421,9 +453,9 @@ Content-Type: application/json
 }
 ```
 
-#### Usuarios
+### Usuarios
 
-##### Validate user (Login)
+#### Validate user (Login)
 ```http
 POST /usuarios/login
 Content-Type: application/json
@@ -451,15 +483,15 @@ Content-Type: application/json
 }
 ```
 
-### ⚙️ Configuration and Execution
+## ⚙️ Configuration and Execution
 
-#### Prerequisites
+### Prerequisites
 
 - [.NET 10 SDK](https://dotnet.microsoft.com/download/dotnet/10.0)
 - [SQL Server LocalDB](https://learn.microsoft.com/sql/database-engine/configure-windows/sql-server-express-localdb) or SQL Server Express
 - [Visual Studio 2022](https://visualstudio.microsoft.com/) (optional)
 
-#### Steps to Run
+### Steps to Run
 
 1. **Clone the repository**
    ```bash
@@ -490,7 +522,7 @@ Content-Type: application/json
 
 5. **The database is created automatically** when running the application for the first time thanks to `EnsureCreated()`.
 
-#### Initial Test Data
+### Initial Test Data
 
 When running the application, the following are created automatically:
 
@@ -507,14 +539,14 @@ When running the application, the following are created automatically:
 - Identification: CC-1088315344
 - Email: echeverri121@gmail.com
 
-### 🔒 Security Features
+## 🔒 Security Features
 
 - **CORS enabled**: Allows consumption from any origin (configured for development)
 - **Validations**: Data Annotations in models for input validation
 - **Computed columns**: Automatically generated by SQL Server
 - **Stored Procedures**: For optimized queries
 
-### 🛠️ Technologies and NuGet Packages
+## 🛠️ Technologies and NuGet Packages
 
 ```xml
 <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="10.0.1" />
@@ -524,9 +556,9 @@ When running the application, the following are created automatically:
 <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.1" />
 ```
 
-### 📊 Stored Procedures
+## 📊 Stored Procedures
 
-#### sp_GetPersonasCreadas
+### sp_GetPersonasCreadas
 
 Optimized query to get all persons with computed columns:
 
@@ -551,42 +583,68 @@ BEGIN
 END
 ```
 
-### 🌐 Frontend Consumption
+## 🌐 Frontend Consumption
 
-See the `UI_VANILLA_JS_PROMPT.md` file for detailed instructions on how to create a Vanilla JavaScript interface that consumes this API.
+**Frontend Repository**: [WTWTest-Front](https://github.com/light-roast/WTWTest-Front)
 
-### 🐛 Troubleshooting
+This project has a complete user interface developed in Vanilla JavaScript (HTML, CSS, pure JS) that consumes all endpoints of this API.
 
-#### Error: SQL Server LocalDB not found
+The frontend includes:
+- 📱 Login page with user validation
+- 👥 Responsive person list
+- ➕ Form to create new persons
+- 🎨 Modern and clean interface
+- 🔄 API consumption with Fetch API and async/await
+
+**Additional instructions**: See the `UI_VANILLA_JS_PROMPT.md` file in this repository for details about the frontend implementation.
+
+## 🐛 Troubleshooting
+
+### Error: SQL Server LocalDB not found
 **Solution:** Install SQL Server Express LocalDB from [here](https://aka.ms/ssmsfullsetup)
 
-#### Error: Port already in use
+### Error: Port already in use
 **Solution:** Modify the port in `launchSettings.json`:
 ```json
 "applicationUrl": "http://localhost:5000"
 ```
 
-#### Error: Database is not created
+### Error: Database is not created
 **Solution:** Verify that SQL Server LocalDB is running:
 ```bash
 sqllocaldb info
 sqllocaldb start mssqllocaldb
 ```
 
-### 📝 Development Notes
+## 📝 Development Notes
 
 - **Do not use migrations**: The project uses `EnsureCreated()` to create the database automatically
 - **Computed columns**: `FullName` and `FullIdentificationNumber` are automatically generated in SQL Server with `PERSISTED`
 - **AutoMapper**: Automatically ignores auto-generated and computed properties
 - **GETUTCDATE()**: Used to automatically set the creation date in UTC
 
-### 👤 Author
+## 🔗 Related Repositories
+
+### Frontend - WTWTest-Front
+🌐 **[https://github.com/light-roast/WTWTest-Front](https://github.com/light-roast/WTWTest-Front)**
+
+Complete user interface developed in Vanilla JavaScript (HTML, CSS, JS) that consumes this REST API.
+
+**Frontend Features:**
+- ✅ Login system with validation
+- ✅ Complete person management (CRUD)
+- ✅ Responsive and modern design
+- ✅ API consumption with Fetch and async/await
+- ✅ Form validation
+- ✅ Error handling and loading states
+
+## 👤 Author
 
 Daniel Echeverri
 - Email: echeverri121@gmail.com
 - GitHub: [@light-roast](https://github.com/light-roast)
 
-### 📄 License
+## 📄 License
 
 This project is a technical test for WTW.
 
